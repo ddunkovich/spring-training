@@ -11,6 +11,7 @@ import org.springframework.lang.Nullable;
 import java.util.HashMap;
 import java.util.Map;
 
+// ToDo change scope to Singleton, not Thread
 public class TimeLimitedScope implements Scope {
 
     private static final Log logger = LogFactory.getLog(TimeLimitedScope.class);
@@ -33,6 +34,7 @@ public class TimeLimitedScope implements Scope {
             scope.put(name, scopedObject);
             System.out.println(String.format("%s: Object %s have been created", DateUtil.getCurrentDate(), name));
 
+            // ToDo recreate beans on calling get() if they live more than 8min
             // Remove a bean after 1 minute delay
             new Thread(() -> {
                 try {

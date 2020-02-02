@@ -2,14 +2,15 @@ package by.ddunkovich.playground.spring.util;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class DateUtil {
 
     public static String getCurrentDate() {
-        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-        Date date = new Date();
-        //2016/11/16 12:08:43
-        return dateFormat.format(date);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime date = LocalDateTime.now();
+        return formatter.format(date);
     }
 }
